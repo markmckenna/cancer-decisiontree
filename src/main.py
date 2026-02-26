@@ -44,7 +44,7 @@ def encode_categorical_columns(df):
         mappings[col] = dict(enumerate(uniques))
     return encoded_df, mappings
 
-[raw, expected] = load_csv_for_decision_tree("MP2PRTWT.clinical.csv", "Status")
+[raw, expected] = load_csv_for_decision_tree("MP2PRTWT.clinical_v2.csv", "Status")
 data, mappings = encode_categorical_columns(raw)
 
 # 2. Split into Training (80%) and Testing (20%)
