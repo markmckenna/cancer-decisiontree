@@ -28,7 +28,7 @@ def load_csv_for_decision_tree(csv_path, target_column):
     """
 
     df = pd.read_csv(csv_path).drop(columns=["patientID"])
-    X = df.drop(columns=[target_column])
+    X = df.drop(columns=[target_column, "Cause of death"])
     y = df[target_column]
     return X, y
 
@@ -121,6 +121,11 @@ def ask_user_gui(data, mappings, model):
         canvas.draw()
         canvas.get_tk_widget().pack()
 
+    def on_closing():
+        plt.close('all')
+        root.destroy()
+
+    root.protocol("WM_DELETE_WINDOW", on_closing)
     root.mainloop()
 
 if __name__ == "__main__":
